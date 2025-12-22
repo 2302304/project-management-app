@@ -40,8 +40,7 @@ desktop.ini
 *~
 
 # Prisma
-backend/prisma/migrations/*_*
-!backend/prisma/migrations/.gitkeep
+# Migrations are needed for production deployments
 
 # Docker
 docker-compose.override.yml
