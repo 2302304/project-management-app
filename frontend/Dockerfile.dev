@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Kopioi package.json
+COPY package*.json ./
+
+# Asenna riippuvuudet
+RUN npm install
+
+# Kopioi loput
+COPY . .
+
+# Altista Vite dev server portti
+EXPOSE 5173
+
+# Käynnistä dev server (--host sallii yhteydet Docker-kontin ulkopuolelta)
+CMD ["npm", "run", "dev", "--", "--host"]

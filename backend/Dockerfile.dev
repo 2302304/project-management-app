@@ -1,0 +1,24 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Kopioi package.json ja package-lock.json
+COPY package*.json ./
+
+# Asenna riippuvuudet
+RUN npm install
+
+# Kopioi Prisma schema
+COPY prisma ./prisma/
+
+# Generoi Prisma Client
+RUN npx prisma generate
+
+# Kopioi loput tiedostot
+COPY . .
+
+# Altista portti
+EXPOSE 3000
+
+# Käynnistä dev mode
+CMD ["npm", "run", "dev"]
