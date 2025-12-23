@@ -36,13 +36,18 @@ export const LoginPage = () => {
           <CardTitle className="text-center">Kirjaudu sisään</CardTitle>
         </CardHeader>
         <CardContent>
+          <div className="mb-4 p-3 bg-muted rounded-md text-sm">
+            <p className="font-semibold mb-1">Demo-tunnukset:</p>
+            <p className="text-muted-foreground">demo@example.com / demo123</p>
+          </div>
+
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <Input
               label="Sähköposti"
               type="email"
               {...register('email')}
               error={errors.email?.message}
-              placeholder="nimi@esimerkki.fi"
+              placeholder="demo@example.com"
             />
 
             <Input
@@ -50,7 +55,7 @@ export const LoginPage = () => {
               type="password"
               {...register('password')}
               error={errors.password?.message}
-              placeholder="••••••••"
+              placeholder="demo123"
             />
 
             {loginError && (
